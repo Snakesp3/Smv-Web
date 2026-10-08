@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SMV Tecnología & Servicios | Servicio Técnico Profesional en Bahía Blanca</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; scroll-behavior: smooth; }
+        body { background-color: #0a0f1d; color: #f8fafc; line-height: 1.6; }
+        
+        header { position: sticky; top: 0; z-index: 100; background: rgba(10, 15, 29, 0.95); backdrop-filter: blur(10px); border-bottom: 1px solid #1e293b; }
+        .nav-container { max-width: 1200px; margin: 0 auto; padding: 15px 20px; display: flex; justify-content: space-between; align-items: center; }
+        .logo-area { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+        .logo-icon { width: 45px; height: 45px; background: linear-gradient(135deg, #0284c7, #38bdf8); border-radius: 12px; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; font-size: 18px; box-shadow: 0 0 15px rgba(2, 132, 199, 0.4); }
+        .logo-text h1 { font-size: 18px; font-weight: 800; color: white; letter-spacing: -0.5px; }
+        .logo-text span { font-size: 10px; text-transform: uppercase; letter-spacing: 2px; color: #38bdf8; font-weight: 600; display: block; }
+        
+        nav ul { display: flex; gap: 30px; list-style: none; align-items: center; }
+        nav a { color: #cbd5e1; text-decoration: none; font-weight: 500; font-size: 15px; transition: color 0.2s; }
+        nav a:hover { color: #38bdf8; }
+        .btn-whatsapp-nav { background: #059669; color: white; padding: 10px 18px; border-radius: 12px; font-weight: 600; text-decoration: none; display: flex; align-items: center; gap: 8px; transition: background 0.2s; box-shadow: 0 4px 12px rgba(5, 150, 105, 0.3); }
+        .btn-whatsapp-nav:hover { background: #047857; }
+
+        .hero { padding: 80px 20px; max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 50px; align-items: center; }
+        .hero-badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(2, 132, 199, 0.15); border: 1px solid rgba(2, 132, 199, 0.3); padding: 6px 14px; border-radius: 30px; font-size: 12px; font-weight: 600; color: #38bdf8; margin-bottom: 20px; }
+        .pulse-dot { width: 8px; height: 8px; background: #34d399; border-radius: 50%; animation: pulse 2s infinite; }
+        @keyframes pulse { 0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(52, 211, 153, 0.7); } 70% { transform: scale(1); box-shadow: 0 0 0 8px rgba(52, 211, 153, 0); } 100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(52, 211, 153, 0); } }
+
+        .hero h2 { font-size: 42px; font-weight: 800; line-height: 1.15; margin-bottom: 20px; color: #ffffff; }
+        .hero h2 span { background: linear-gradient(90deg, #38bdf8, #818cf8); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .hero p { font-size: 18px; color: #94a3b8; margin-bottom: 30px; line-height: 1.6; }
+        .hero-buttons { display: flex; gap: 15px; flex-wrap: wrap; }
+        .btn-primary { background: linear-gradient(135deg, #0284c7, #2563eb); color: white; padding: 14px 28px; border-radius: 14px; font-weight: 700; text-decoration: none; display: flex; align-items: center; gap: 12px; box-shadow: 0 10px 25px rgba(2, 132, 199, 0.4); transition: transform 0.2s, box-shadow 0.2s; }
+        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 15px 30px rgba(2, 132, 199, 0.6); }
+        .btn-secondary { background: #131b2e; border: 1px solid #1e293b; color: #cbd5e1; padding: 14px 24px; border-radius: 14px; font-weight: 600; text-decoration: none; display: flex; align-items: center; gap: 8px; transition: background 0.2s, color 0.2s; }
+        .btn-secondary:hover { background: #1e293b; color: white; }
+
+        .hero-card { background: #131b2e; border: 1px solid #1e293b; border-radius: 24px; padding: 24px; box-shadow: 0 20px 40px rgba(0,0,0,0.5); position: relative; }
+        .hero-img-container { width: 100%; aspect-ratio: 4/5; border-radius: 16px; overflow: hidden; background: #0a0f1d; margin-bottom: 20px; position: relative; }
+        .hero-img-container img { width: 100%; height: 100%; object-fit: cover; }
+        .quote-box { background: rgba(10, 15, 29, 0.8); border: 1px solid #1e293b; padding: 16px; border-radius: 14px; position: relative; }
+        .quote-box p { font-size: 13px; font-style: italic; color: #cbd5e1; }
+        .quote-author { font-size: 12px; font-weight: bold; color: #38bdf8; text-align: right; margin-top: 6px; }
+
+        .features-bar { max-width: 1200px; margin: 0 auto; padding: 0 20px 60px 20px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+        .feature-item { background: #131b2e; border: 1px solid #1e293b; padding: 16px 20px; border-radius: 16px; display: flex; align-items: center; gap: 14px; }
+        .feature-item span.icon { color: #38bdf8; font-size: 20px; }
+        .feature-item span.text { font-size: 14px; font-weight: 600; color: #e2e8f0; }
+
+        .services-section { background: rgba(19, 27, 46, 0.4); border-top: 1px solid #1e293b; border-bottom: 1px solid #1e293b; padding: 80px 20px; }
+        .section-header { text-align: center; max-width: 700px; margin: 0 auto 50px auto; }
+        .section-header span { color: #38bdf8; font-size: 12px; text-transform: uppercase; letter-spacing: 2px; font-weight: 700; background: rgba(2, 132, 199, 0.15); padding: 6px 14px; border-radius: 20px; border: 1px solid rgba(2, 132, 199, 0.3); display: inline-block; margin-bottom: 15px; }
+        .section-header h3 { font-size: 32px; font-weight: 800; color: white; margin-bottom: 15px; }
+        .section-header p { color: #94a3b8; font-size: 16px; }
+
+        .services-grid { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 25px; }
+        .service-card { background: #131b2e; border: 1px solid #1e293b; border-radius: 20px; padding: 30px; transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s; display: flex; flex-direction: column; justify-content: space-between; }
+        .service-card:hover { transform: translateY(-4px); border-color: rgba(56, 189, 248, 0.4); box-shadow: 0 15px 30px rgba(0,0,0,0.4); }
+        .service-icon { width: 56px; height: 56px; background: rgba(2, 132, 199, 0.15); border: 1px solid rgba(56, 189, 248, 0.3); border-radius: 16px; display: flex; align-items: center; justify-content: center; color: #38bdf8; font-size: 24px; margin-bottom: 20px; }
+        .service-card h4 { font-size: 20px; font-weight: 700; color: white; margin-bottom: 12px; }
+        .service-card p { font-size: 14px; color: #94a3b8; line-height: 1.6; margin-bottom: 20px; }
+        .service-footer { border-top: 1px solid #1e293b; padding-top: 15px; display: flex; justify-content: space-between; align-items: center; font-size: 12px; font-weight: 600; color: #38bdf8; }
+
+        .about-section { padding: 80px 20px; max-width: 1200px; margin: 0 auto; }
+        .about-box { background: linear-gradient(135deg, #131b2e, #0a0f1d); border: 1px solid #1e293b; border-radius: 28px; padding: 50px; display: grid; grid-template-columns: 0.8fr 1.2fr; gap: 50px; align-items: center; box-shadow: 0 20px 40px rgba(0,0,0,0.4); }
+        .about-img { width: 100%; aspect-ratio: 1/1; border-radius: 24px; overflow: hidden; border: 2px solid rgba(56, 189, 248, 0.3); box-shadow: 0 15px 30px rgba(0,0,0,0.5); }
+        .about-img img { width: 100%; height: 100%; object-fit: cover; }
+        .about-content h3 { font-size: 32px; font-weight: 800; color: white; margin-bottom: 20px; }
+        .about-content p { color: #94a3b8; font-size: 16px; line-height: 1.7; margin-bottom: 25px; }
+        .about-bullets { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 30px; }
+        .about-bullet { background: rgba(10, 15, 29, 0.6); border: 1px solid #1e293b; padding: 14px; border-radius: 14px; }
+        .about-bullet h5 { font-size: 14px; font-weight: 700; color: white; margin-bottom: 4px; }
+        .about-bullet p { font-size: 12px; color: #94a3b8; margin: 0; }
+
+        .cta-section { background: rgba(19, 27, 46, 0.6); border-top: 1px solid #1e293b; padding: 90px 20px; text-align: center; }
+        .cta-container { max-width: 800px; margin: 0 auto; }
+        .cta-container h3 { font-size: 38px; font-weight: 800; color: white; margin-bottom: 20px; }
+        .cta-container p { font-size: 18px; color: #94a3b8; margin-bottom: 40px; }
+        .cta-buttons { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
+
+        footer { background: #0a0f1d; border-top: 1px solid #1e293b; padding: 30px 20px; text-align: center; color: #64748b; font-size: 13px; }
+        .footer-content { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px; }
+
+        @media (max-width: 900px) {
+            .hero, .about-box { grid-template-columns: 1fr; text-align: center; }
+            .hero-buttons, .cta-buttons { justify-content: center; }
+            .features-bar { grid-template-columns: 1fr; }
+            nav ul { display: none; }
+            .about-bullets { grid-template-columns: 1fr; }
+            .footer-content { flex-direction: column; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HEADER -->
+    <header>
+        <div class="nav-container">
+            <a href="#" class="logo-area">
+                <div class="logo-icon">SMV</div>
+                <div class="logo-text">
+                    <h1>SMV</h1>
+                    <span>Tecnología & Servicios</span>
+                </div>
+            </a>
+            <nav>
+                <ul>
+                    <li><a href="#servicios">Servicios</a></li>
+                    <li><a href="#sobre-mi">Sobre Mí</a></li>
+                    <li><a href="#contacto">Contacto</a></li>
+                </ul>
+            </nav>
+            <a href="https://wa.me/5492914310205?text=Hola%20Seba,%20necesito%20consultar%20por%20un%20servicio%20técnico%20para%20mi%20equipo." target="_blank" class="btn-whatsapp-nav">
+                <span>💬 WhatsApp</span>
+            </a>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <div class="hero-left">
+            <div class="hero-badge">
+                <div class="pulse-dot"></div>
+                Servicio Técnico Profesional • Bahía Blanca
+            </div>
+            <h2>¡Hola! Soy Seba de <span>SMV Tecnología & Servicios</span></h2>
+            <p>Me encargo de que tu PC o notebook vuelva a funcionar como nueva. Soluciones rápidas, confiables y con atención 100% personalizada.</p>
+            <div class="hero-buttons">
+                <a href="https://wa.me/5492914310205?text=Hola%20Seba,%20quiero%20consultar%20sin%20compromiso." target="_blank" class="btn-primary">
+                    <span>💬 Consultá sin compromiso: 291 431 0205</span>
+                </a>
+                <a href="#servicios" class="btn-secondary">
+                    <span>Ver Servicios ↓</span>
+                </a>
+            </div>
+        </div>
+        <div class="hero-right">
+            <div class="hero-card">
+                <div class="hero-img-container">
+                    <img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=800&q=80" alt="Seba - SMV Tecnología">
+                </div>
+                <div class="quote-box">
+                    <p>"Mi objetivo es simple: que tu equipo funcione mejor, más rápido y sin problemas."</p>
+                    <div class="quote-author">Tu equipo, en buenas manos</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FEATURES BAR -->
+    <div class="features-bar">
+        <div class="feature-item">
+            <span class="icon">🛡️</span>
+            <span class="text">Atención Personalizada</span>
+        </div>
+        <div class="feature-item">
+            <span class="icon">✔️</span>
+            <span class="text">Confiable y Seguro</span>
+        </div>
+        <div class="feature-item">
+            <span class="icon">⚡</span>
+            <span class="text">Rápido y Eficiente</span>
+        </div>
+    </div>
+
+    <!-- SERVICES SECTION -->
+    <section id="servicios" class="services-section">
+        <div class="section-header">
+            <span>¿Qué hago?</span>
+            <h3>Soluciones Especializadas para tu Computadora</h3>
+            <p>Trabajo con notebooks y PC de escritorio de todas las marcas y modelos, utilizando componentes certificados.</p>
+        </div>
+
+        <div class="services-grid">
+            <!-- Service 1 -->
+            <div class="service-card">
+                <div>
+                    <div class="service-icon">💻</div>
+                    <h4>Reinstalación de Sistema Windows 10 / 11</h4>
+                    <p>Originales y certificados. Dejo tu equipo limpio, rápido, actualizado y estable para que rinda al máximo.</p>
+                </div>
+                <div class="service-footer">
+                    <span>Optimización Completa</span>
+                    <span>→</span>
+                </div>
+            </div>
+
+            <!-- Service 2 -->
+            <div class="service-card">
+                <div>
+                    <div class="service-icon">☁️</div>
+                    <h4>Backup de tu Información</h4>
+                    <p>Resguardo seguro de tus documentos, fotos, archivos y programas importantes antes de cualquier intervención técnica.</p>
+                </div>
+                <div class="service-footer">
+                    <span>Seguridad de Datos</span>
+                    <span>→</span>
+                </div>
+            </div>
+
+            <!-- Service 3 -->
+            <div class="service-card">
+                <div>
+                    <div class="service-icon">🚀</div>
+                    <h4>Cambio de Disco HDD por SSD</h4>
+                    <p>El cambio más recomendado: multiplica la velocidad al encender, abrir programas y navegar, con mayor vida útil.</p>
+                </div>
+                <div class="service-footer">
+                    <span>Velocidad Extrema</span>
+                    <span>→</span>
+                </div>
+            </div>
+
+            <!-- Service 4 -->
+            <div class="service-card">
+                <div>
+                    <div class="service-icon">⚡</div>
+                    <h4>Cambio de Memoria RAM</h4>
+                    <p>Mejora inmediata en la capacidad multitarea y fluidez general para que tu equipo no se trabe al abrir varias apps.</p>
+                </div>
+                <div class="service-footer">
+                    <span>Mayor Rendimiento</span>
+                    <span>→</span>
+                </div>
+            </div>
+
+            <!-- Service 5 -->
+            <div class="service-card" style="grid-column: span 2;">
+                <div>
+                    <div class="service-icon">🔧</div>
+                    <h4>Trabajo con Notebook y PC de Escritorio</h4>
+                    <p>Soluciones integrales de hardware y software para equipos de todas las marcas y modelos. Diagnóstico transparente y asesoramiento profesional en Bahía Blanca.</p>
+                </div>
+                <div class="service-footer">
+                    <span>Todas las Marcas y Modelos</span>
+                    <span>→</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT SECTION -->
+    <section id="sobre-mi" class="about-section">
+        <div class="about-box">
+            <div class="about-img">
+                <img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=800&q=80" alt="Seba - SMV Tecnología">
+            </div>
+            <div class="about-content">
+                <h3>Compromiso y Profesionalismo</h3>
+                <p>Cada equipo que entra al taller recibe un trato personalizado. No te ofrezco soluciones genéricas, sino el diagnóstico exacto que tu computadora necesita para volver a rendir como el primer día, cuidando tu información y tu inversión.</p>
+                
+                <div class="about-bullets">
+                    <div class="about-bullet">
+                        <h5>Transparencia</h5>
+                        <p>Presupuestos claros antes de empezar.</p>
+                    </div>
+                    <div class="about-bullet">
+                        <h5>Rapidez</h5>
+                        <p>Tiempos de entrega ágiles.</p>
+                    </div>
+                </div>
+
+                <a href="https://www.instagram.com/smv_tecnologiayservicios/" target="_blank" class="btn-primary" style="display: inline-flex;">
+                    <span>📸 Seguime en Instagram (@smv_tecnologiayservicios)</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA SECTION -->
+    <section id="contacto" class="cta-section">
+        <div class="cta-container">
+            <h3>¿Tu PC o Notebook necesita atención?</h3>
+            <p>Hablemos ahora mismo por WhatsApp. Contame qué le pasa a tu equipo y te doy asesoramiento y presupuesto sin compromiso.</p>
+            <div class="cta-buttons">
+                <a href="https://wa.me/5492914310205?text=Hola%20Seba,%20quiero%20consultar%20por%20un%20servicio%20técnico." target="_blank" class="btn-primary" style="font-size: 16px; padding: 16px 32px;">
+                    <span>💬 Enviar WhatsApp (291 431 0205)</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-content">
+            <div><strong>SMV Tecnología & Servicios</strong> • Bahía Blanca</div>
+            <div>© 2026 Todos los derechos reservados.</div>
+            <div><a href="https://www.instagram.com/smv_tecnologiayservicios/" target="_blank" style="color: #38bdf8; text-decoration: none;">Instagram</a></div>
+        </div>
+    </footer>
+
+</body>
+</html>
